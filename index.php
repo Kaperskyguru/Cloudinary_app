@@ -7,7 +7,7 @@ require_once 'upload_image.php';
     $files = is_array($files) ? $files : array( $files );
     $files_data = array();
     foreach ($files["tmp_name"] as $index => $value) {
-        array_push($files_data, Uploader::upload($value, $files["name"][$index]));
+        array_push($files_data, Image::upload($value, $files["name"][$index]));
     }
 
 }
@@ -27,5 +27,19 @@ require_once 'upload_image.php';
         <input type="file" name="files[]" id="files[]" />
         <input type="submit" id="submit" name="submit" value="Submit"/>
     </form>
+    <br/>
+    <br/>
+    <div>
+        <?php 
+        $thump_params = array(
+            "format" => "png", 
+            "height" => "150", 
+            "width" => "150", 
+            "class" => "thumpnail inline"
+        );
+        // public id from database
+        // $options = ;
+        Image::display("Abia Poly.png", array_merge($thump_params, array( "crop" => "fill" )));?>
+    </div>
 </body>
 </html>

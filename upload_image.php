@@ -1,6 +1,8 @@
 <?php
 require_once "main.php";
-class Uploader
+
+
+class Image
 {
     function __construct(){
 
@@ -19,4 +21,10 @@ class Uploader
 
         // save name public_id to database
     }
+    // array_merge($thumbs_params, array( "crop" => "fill" ))
+    public static function display($public_id, $options)
+    {
+      echo cl_image_tag($public_id, $options);
+    }
+
 }
